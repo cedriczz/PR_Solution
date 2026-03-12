@@ -1,0 +1,7 @@
+<!doctype html><html lang="zh"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Results List</title><link rel="stylesheet" href="/static/style.css"></head><body>
+<header><h1>轻量舆情监测工具</h1><nav><a href="/monitoring">Monitoring Config</a><a href="/results">Results List</a><a href="/alerts">Alerts List</a></nav></header>
+<main><section class="card"><h2>Results List</h2><label>任务ID <input id="taskId" type="number" value="1" min="1"></label><button onclick="loadResults()">加载</button>
+<table><thead><tr><th>时间</th><th>标题</th><th>语言</th><th>情绪</th><th>链接</th></tr></thead><tbody id="tbody"></tbody></table></section></main>
+<script>
+async function loadResults(){const id=document.getElementById('taskId').value;const res=await fetch(`/api/tasks/${id}/results`);const rows=await res.json();const tb=document.getElementById('tbody');tb.innerHTML='';rows.forEach(r=>{const tr=document.createElement('tr');tr.innerHTML=`<td>${r.created_at}</td><td>${r.title}</td><td>${r.language}</td><td>${r.sentiment}(${Number(r.sentiment_score).toFixed(2)})</td><td><a href="${r.url}" target="_blank">打开</a></td>`;tb.appendChild(tr);});}
+</script></body></html>
