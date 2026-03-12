@@ -1,0 +1,12 @@
+{
+  "name": "品牌A海外舆情监测",
+  "keywords": ["BrandA", "产品X", "品牌A"],
+  "exclude_keywords": ["招聘", "广告"],
+  "languages": ["zh", "en"],
+  "sources": [
+    "https://hnrss.org/frontpage",
+    "https://www.reddit.com/r/worldnews/.rss"
+  ],
+  "frequency_minutes": 30,
+  "alert_threshold": 0.6
+}
